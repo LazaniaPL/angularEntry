@@ -1,0 +1,43 @@
+<h3>Get configuration from JSON file</h3>
+<div>
+  <!-- <button type="button" (click)="clear(); showData()">get</button>
+
+  <button type="button" (click)="clear()">clear</button> -->
+
+  <span *ngIf="result">
+    <!-- <ng-container *ngFor="let data of result">
+      {{ data.dataUrl }}
+    </ng-container> -->
+
+    <form class="example-form" (keydown.enter)="onEnter($event)">
+      <input
+
+        type="text"
+        placeholder="Search something"
+        [formControl]="control"
+        [matAutocomplete]="auto"
+
+      />
+      <mat-autocomplete #auto="matAutocomplete">
+        <
+        <mat-option *ngFor="let data of result" [value]="data.dataUrl">
+          {{ data.dataUrl }}
+        </mat-option>
+      </mat-autocomplete>
+
+      <div>
+        <a
+          mat-raised-button
+          [disabled]="controlValue == ''"
+          color="primary"
+          (click)='onClick($event)'
+          target="_blank"
+          >Search</a
+        >
+
+        <!-- <a [ngClass]="{'disabled' :controlValue == ''}" mat-stroked-button href="https://www.google.com/" target="_blank">Link</a> -->
+      </div>
+    </form>
+  </span>
+</div>
+<p *ngIf="error" class="error">{{ error | json }}</p>
