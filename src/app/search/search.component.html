@@ -19,11 +19,13 @@
 
       />
       <mat-autocomplete #auto="matAutocomplete">
-        <
-        <mat-option *ngFor="let data of result" [value]="data.dataUrl">
+
+        <mat-option *ngFor="let data of filteredResult" [value]="data.dataUrl">
           {{ data.dataUrl }}
         </mat-option>
       </mat-autocomplete>
+
+
 
       <div>
         <a

@@ -15,10 +15,18 @@ export class SearchComponent implements OnInit {
   headers: string[] = [];
   result: Data[] = [];
   array: String[] = [];
+  filteredResult: Data[]=[];
 
   constructor(private comService: ComService) {}
   ngOnInit(): void {
     this.showData();
+    this.control.valueChanges.subscribe(value => {
+    //console.log(value);
+      this.filteredResult=this.result.filter(row=>{
+
+        return row.dataUrl.includes(value)
+      })
+    });
   }
 
   clear() {
@@ -27,40 +35,38 @@ export class SearchComponent implements OnInit {
     this.array = [];
   }
 
-  openHref(){
-    window.location.href = "https://www.google.com/search?q=" + this.controlValue;
+  openHref() {
+    window.location.href =
+      'https://www.google.com/search?q=' + this.controlValue;
   }
 
-  onEnter($event: Event){
+  onEnter($event: Event) {
     $event.preventDefault();
     this.openHref();
   }
 
   onClick(event: MouseEvent) {
     this.openHref();
-
   }
   setArray(result: Data[]) {
-    let object = Object.values(result)
-    let temp =result.map(a=>a.dataUrl)
+    let object = Object.values(result);
+    let temp = result.map((a) => a.dataUrl);
 
-    console.log(temp)
-    return temp
+    console.log(temp);
+    return temp;
   }
 
-  get controlValue(){
+  get controlValue() {
     return this.control.value;
   }
 
   showData() {
-    this.comService
-      .getData()
-      .subscribe(
-        (temp: Data[]) => (
-          console.log(temp),
-           //this.array=this.setArray(temp),
-            (this.result = temp)
-        )
-      );
+    this.comService.getData().subscribe(
+      (temp: Data[]) => (
+        console.log(temp),
+        //this.array=this.setArray(temp),
+        (this.result = temp)
+      )
+    );
   }
 }
