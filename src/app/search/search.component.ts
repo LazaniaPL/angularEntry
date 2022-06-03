@@ -12,28 +12,26 @@ export class SearchComponent implements OnInit {
   control = new FormControl('');
 
   error: any;
-  headers: string[] = [];
   result: Data[] = [];
-  array: String[] = [];
-  filteredResult: Data[]=[];
+  filteredResult: Data[] = [];
 
   constructor(private comService: ComService) {}
   ngOnInit(): void {
     this.showData();
-    this.control.valueChanges.subscribe(value => {
-    //console.log(value);
-      this.filteredResult=this.result.filter(row=>{
+    this.control.valueChanges.subscribe((value) => {
 
-        return row.dataUrl.includes(value)
-      })
+      this.filteredResult = this.result.filter((row) => {
+
+        return row.dataUrl.includes(value.toLowerCase());
+      });
     });
   }
 
-  clear() {
-    this.error = undefined;
-    this.headers = [];
-    this.array = [];
-  }
+  // clear() {
+  //   this.error = undefined;
+  //   this.headers = [];
+  //   this.array = [];
+  // }
 
   openHref() {
     window.location.href =
@@ -41,20 +39,15 @@ export class SearchComponent implements OnInit {
   }
 
   onEnter($event: Event) {
+    console.log($event);
     $event.preventDefault();
     this.openHref();
   }
 
-  onClick(event: MouseEvent) {
+  onClick() {
     this.openHref();
   }
-  setArray(result: Data[]) {
-    let object = Object.values(result);
-    let temp = result.map((a) => a.dataUrl);
 
-    console.log(temp);
-    return temp;
-  }
 
   get controlValue() {
     return this.control.value;

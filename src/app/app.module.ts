@@ -8,18 +8,13 @@ import { SearchComponent } from './search/search.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
-import {ComRoutingModule} from './com/com-routing.module';
+import { ComRoutingModule } from './com/com-routing.module';
 
-import {MatAutocompleteModule} from '@angular/material/autocomplete';
-import {MatButtonModule} from '@angular/material/button'
-
-
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    SearchComponent
-  ],
+  declarations: [AppComponent, SearchComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -28,10 +23,10 @@ import {MatButtonModule} from '@angular/material/button'
     MatAutocompleteModule,
     MatButtonModule,
     ComRoutingModule,
-    RouterModule.forRoot([])
+    RouterModule.forRoot([]),
   ],
 
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

@@ -4,5 +4,6 @@
 
 @import "~@angular/material/prebuilt-themes/purple-green.css";
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; color: rgb(74, 43, 133); background-color: aquamarine;}
+body { margin: 0;  font-size: 1em; background-color: aquamarine;text-align: center;}
+h1 {color: rgb(130, 182, 47)}
+.test1 {font-size: 5em; color: rgb(189, 46, 46)}
